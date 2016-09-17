@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        databaseManager = new DBManagerImpl(this);
+        databaseManager = DBManagerImpl.getInstance(this);
 
         List<DBToken> dbtokens = databaseManager.listTokens();
 
