@@ -182,10 +182,7 @@ public class DBManagerImpl implements DBManager, AsyncOperationListener {
      */
     public void openReadableDb() throws SQLiteException {
         database = mHelper.getReadableDatabase("contraseñahipersecreta");
-        daoMaster = new DaoMaster(database);
-        daoSession = daoMaster.newSession();
-        asyncSession = daoSession.startAsyncSession();
-        asyncSession.setListener(this);
+        openDb();
     }
 
     /**
@@ -193,6 +190,10 @@ public class DBManagerImpl implements DBManager, AsyncOperationListener {
      */
     public void openWritableDb() throws SQLiteException {
         database = mHelper.getWritableDatabase("contraseñahipersecreta");
+        openDb();
+    }
+
+    private void openDb(){
         daoMaster = new DaoMaster(database);
         daoSession = daoMaster.newSession();
         asyncSession = daoSession.startAsyncSession();
